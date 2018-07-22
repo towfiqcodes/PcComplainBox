@@ -3,10 +3,12 @@ package com.backerror.rit.pccomplainbox.Activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
@@ -29,6 +31,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,27 +52,30 @@ public class LogIn extends AppCompatActivity  {
     Button submitBtn;
     TextView fullNameText;
 
+    private Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_sign__in );
-        firstNameEt=findViewById(R.id.firstNameEditText);
-        middleNameEt=findViewById(R.id.middleNameEditText);
-        lastNameEt=findViewById(R.id.lastNameEditText);
-        submitBtn=findViewById(R.id.submitBtn);
-        fullNameText=findViewById(R.id.fullNameText);
-        submitBtn.setOnClickListener(new View.OnClickListener() {
+        setContentView( R.layout.activity_sign_up );
+        button=findViewById( R.id.button );
+        button.setOnClickListener( new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                String firstName=firstNameEt.getText().toString();
-                String middleName=middleNameEt.getText().toString();
-                String lastName=lastNameEt.getText().toString();
-                Intent intent=new Intent( LogIn.this, MainActivity.class );
-                startActivity( intent );
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(
+                        LogIn.this);
+                builder.setTitle("Signup page");
+                builder.setMessage("Page is not applicable at this moment");
+                builder.setPositiveButton("OK",
+                                          new DialogInterface.OnClickListener() {
+                                              public void onClick(DialogInterface dialog,
+                                                                  int which) {
+                                                  Toast.makeText( getApplicationContext(), "Sorry page is under construction", Toast.LENGTH_LONG).show();
+                                              }
+                                          });
+                builder.show();
             }
         });
-
-
-         }
+    }
 }
 

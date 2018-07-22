@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 
+import com.backerror.rit.pccomplainbox.MainActivity;
 import com.backerror.rit.pccomplainbox.R;
 
 public class loginButton extends AppCompatActivity {
@@ -20,12 +21,14 @@ public class loginButton extends AppCompatActivity {
 
         loginButton=findViewById( R.id.loginButton );
         signupButton=findViewById( R.id.signButton );
+        setTitle( "Login Page" );
 
         loginButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( com.backerror.rit.pccomplainbox.Activity.loginButton.this, LogIn.class);
+                Intent intent = new Intent( com.backerror.rit.pccomplainbox.Activity.loginButton.this, MainActivity.class);
                 startActivity(intent);
+
 
 
             }
@@ -34,7 +37,7 @@ public class loginButton extends AppCompatActivity {
         signupButton.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent( loginButton.this,SignUp.class );
+                Intent intent=new Intent( loginButton.this,LogIn.class );
                 startActivity( intent );
             }
         } );
